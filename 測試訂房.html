@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <title>訂房表單</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <style>
+        input, select {
+            margin-bottom: 10px;
+            width: 250px;
+            padding: 8px;
+        }
+        input[readonly] {
+            background-color: #f3f3f3;
+            color: #333;
+            cursor: not-allowed;
+        }
+        input[type=submit] {
+            width: auto;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>房間訂閱表單</h2>
+    <form action="https://formspree.io/f/meqypzlb" method="POST">
+        <label for="name">姓名:</label><br>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="phone">電話:</label><br>
+        <input type="text" id="phone" name="phone" required><br>
+
+        <label for="dateRange">訂閱起訖日:</label><br>
+        <input type="text" id="dateRange" name="dateRange" required readonly><br>
+
+        <label for="totalDays">居住天數:</label><br>
+        <input type="text" id="totalDays" name="totalDays" readonly><br>
+
+        <label for="totalCost">居住金額 (NT$):</label><br>
+        <input type="text" id="totalCost" name="totalCost" readonly><br>
+
+        <input type="submit" value="提交">
+    </form> 
+
+    <script>
+        flatpickr("#dateRange", {
+            mode: "range",
+            minDate: "today",
+            dateFormat: "Y-m-d",
+            inline: true,
+            onChange: function(selectedDates) {
+                if (selectedDates.length == 2) {
+                    const diffTime = selectedDates[1] - selectedDates[0];
+                    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1; // 加1是為了包含終止日
+
+                    document.getElementById('totalDays').value = diffDays;
+                    document.getElementById('totalCost').value = diffDays * 500; // 每天500元
+                }
+            }
+        });
+    </script>
+</body>
+</html>
