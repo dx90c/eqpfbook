@@ -74,18 +74,19 @@
 
 <div class="contentTitle">購書資訊</div>
 
-<p>感謝您對本會出版品的支持，環品會目前出版書籍有以下四本<br />
+<p>感謝您對本會出版品的支持，環境品質文教基金會目前出版書籍有以下四本<br />
 
-我們都是氣候世代，售價360元<br />
-挺身為環境，售價380元<br />
-食物與環境，售價360元<br />
+我們都是氣候世代，售價360元，特價300元<br />
+挺身為環境，售價380元，特價300元<br />
+食物與環境，售價360元，特價300元<br />
 氣候法彙編，售價700元，<b>請至博客來<a href="https://www.books.com.tw/products/0010837531" target="_blank">訂閱</a></b><br />
 
 <br />
 <br />
+ <br />
 購買優惠：<br />
-購買3本以上免運費<br />
-10本以上有九折優惠。<br /><br />
+購買2本以下，請另外加上運費50元。購買3本以上免運費。<br />
+10本以上，再享有九折優惠，即每本再便宜30元，特特價每本好書270元。<br /><br />
 
 匯款資訊：<br />
 匯款帳號：台灣銀行信義分行 054-001-051897<br />
@@ -98,9 +99,6 @@
 3.匯款完成後，填寫下方表單，資料會提交到環品會信箱info.eqpf@msa.hinet.net<br />
 4.請在表單上註明您的訂購詳情（書籍名稱、數量）。如需收據請在訊息欄位註明統編號碼與抬頭。<br />5.我們將盡快處理您的訂單，並安排寄送。<br />
 <br />
-更新訊息：<br />
-『我們都是氣候世代』、『挺身為環境』、『食物與環境』、『氣候法彙編』，現正在各大書店及網路書城熱賣中，歡迎舊雨新知踴躍支持並購買。<br />
-在哪些通路、書城可以買到這兩本書？金石堂、博客來、三民書局、政大書城、誠品及誠品網路書店、讀冊生活TAZZE、城邦閱讀花園、樂天書城等。<br />
 
 </p>
 
@@ -194,9 +192,9 @@
 <script>
 function calculateTotal() {
   const bookPrices = {
-    "我們都是氣候世代": 360,
-    "挺身為環境": 380,
-    "食物為環境": 360
+    "我們都是氣候世代": 300,
+    "挺身為環境": 300,
+    "食物為環境": 300
   };
   
   let bookSubtotal = 0;
@@ -215,7 +213,7 @@ function calculateTotal() {
   }
   
   if (bookCount < 3) {
-    total += 30; // 加收運費
+    total += 50; // 加收運費
   }
   
   document.getElementById("book-subtotal").textContent = bookSubtotal;
@@ -225,7 +223,7 @@ function calculateTotal() {
   const discountInfo = document.getElementById("discount-info");
   
   if (bookCount < 3) {
-    shippingInfo.textContent = "運費: 30 元";
+    shippingInfo.textContent = "運費: 50 元";
   } else {
     shippingInfo.textContent = "運費: 免運費";
   }
